@@ -1,0 +1,86 @@
+{
+    "app1": {
+        "name": "app1",
+        "listen": "172.19.0.4:9001",
+        "upstream": "app1:80",
+        "enabled": false,
+        "toxics": [
+            {
+                "attributes": {
+                    "latency": 2000,
+                    "jitter": 0
+                },
+                "name": "latency_downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+            }
+        ]
+    },
+    "app2": {
+        "name": "app2",
+        "listen": "172.19.0.4:9002",
+        "upstream": "app2:80",
+        "enabled": true,
+        "toxics": [
+            {
+                "attributes": {
+                    "average_size": 4500,
+                    "size_variation": 74,
+                    "delay": 23
+                },
+                "name": "slicer_downstream",
+                "type": "slicer",
+                "stream": "downstream",
+                "toxicity": 1
+            },
+            {
+                "attributes": {
+                    "bytes": 2000
+                },
+                "name": "limit_data_downstream",
+                "type": "limit_data",
+                "stream": "downstream",
+                "toxicity": 1
+            }
+        ]
+    },
+    "app3": {
+        "name": "app3",
+        "listen": "172.19.0.4:9003",
+        "upstream": "app3:80",
+        "enabled": true,
+        "toxics": [
+            {
+                "attributes": {
+                    "bytes": 2000
+                },
+                "name": "limit_data_downstream",
+                "type": "limit_data",
+                "stream": "downstream",
+                "toxicity": 1
+            },
+            {
+                "attributes": {
+                    "latency": 2000,
+                    "jitter": 0
+                },
+                "name": "latency_downstream",
+                "type": "latency",
+                "stream": "downstream",
+                "toxicity": 1
+            },
+            {
+                "attributes": {
+                    "average_size": 4500,
+                    "size_variation": 74,
+                    "delay": 23
+                },
+                "name": "slicer_downstream",
+                "type": "slicer",
+                "stream": "downstream",
+                "toxicity": 1
+            }
+        ]
+    }
+}
