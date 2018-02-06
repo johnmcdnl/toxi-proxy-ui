@@ -1,29 +1,36 @@
 import React, { Component } from "react";
 import Proxy from "./Proxy";
 import config from "../../Service/Config";
-import axios from "axios";
 
 class Proxies extends Component {
-  render(async) {
-    let proxies = [];
-    await axios
-      .get(config.BASE_URL + config.GET_PROXIES_URL)
-      .then(function(response) {
-        console.log(response.data);
-        for (let [name, data] of Object.entries(response.data)) {
-          console.log("something ",name, data);
+  constructor(props) {
+    super(props);
+    this.state = {
+      proxies: []
+    };
+  }
+
+  componentDidMount() {
+    return fetch(config.BASE_URL + config.GET_PROXIES_URL)
+      .then(response => response.json())
+      .then(responseJson => {
+        let proxies = [];
+        for (let [name, data] of Object.entries(responseJson)) {
           proxies.push(
-            <div className="col" >
+            <div key={name} className="col">
               <Proxy data={data} />
             </div>
           );
         }
+        this.setState({ proxies: proxies });
       })
-      .catch(function(error) {
-        console.log(error);
+      .catch(error => {
+        console.error(error);
       });
-      console.log("Proxies: ", proxies);
-    return <div className="row">{proxies}</div>;
+  }
+
+  render() {
+    return <div className="row">{this.state.proxies}</div>;
   }
 }
 

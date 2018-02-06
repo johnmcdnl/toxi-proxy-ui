@@ -3,7 +3,6 @@ import Toxics from "../Toxic/Toxics";
 
 class Proxy extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="col">
         <div className="card text-center mb-3 mt-3">
