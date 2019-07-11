@@ -9,9 +9,9 @@
     "process": "^0.11.10",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-native": "^0.59.0",
+    "react-native": "^0.60.0",
     "react-scripts": "3.0.0",
-    "snyk": "^1.171.1"
+    "snyk": "^1.192.6"
   },
   "scripts": {
     "start": "react-scripts start",
